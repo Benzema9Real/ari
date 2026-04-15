@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Можно познакомиться? 😏</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #000000, #1a1a1a);
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yes {
+    background: #00c853;
+    color: white;
+}
+
+#yes:hover {
+    transform: scale(1.1);
+}
+
+#no {
+    background: #d50000;
+    color: white;
+    position: absolute;
+}
+
+#beg {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ff5252;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Можно с тобой познакомиться? 😏</h1>
+
+    <button id="yes" onclick="yes()">Да 💖</button>
+    <button id="no" onmouseover="moveNo()">Нет 😢</button>
+
+    <p id="beg" class="hidden"></p>
+</div>
+
+<script>
+
+function yes() {
+    // переход на страницу чата (потом подключим Django)
+    window.location.href = "chat.html";
+}
+
+function moveNo() {
+    let btn = document.getElementById("no");
+
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+
+    let phrases = [
+        "ну почемуу 😭",
+        "дай шанс 🥺",
+        "я хороший честно 😭",
+        "ну пожалуйста 😭",
+        "ты точно уверена? 😢"
+    ];
+
+    let text = phrases[Math.floor(Math.random() * phrases.length)];
+
+    let beg = document.getElementById("beg");
+    beg.innerText = text;
+    beg.classList.remove("hidden");
+}
+
+</script>
+
+</body>
+</html>
